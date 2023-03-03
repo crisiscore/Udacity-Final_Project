@@ -29,7 +29,8 @@ class MyApp : Application() {
         viewModel {
             RepresentativeViewModel(
                 app = get(),
-                representativeDataSource = get() as RepresentativeDataSource
+                representativeDataSource = get() as RepresentativeDataSource,
+                handle = get()
             )
         }
         viewModel { VoterInfoViewModel(get() as ElectionDataSource, get() as VoterInfoDataSource) }

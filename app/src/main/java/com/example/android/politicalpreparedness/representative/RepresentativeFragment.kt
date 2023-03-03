@@ -27,6 +27,7 @@ class DetailFragment : Fragment() {
     companion object {
         private const val LOCATION_REQUEST_PRIORITY = LocationRequest.PRIORITY_HIGH_ACCURACY
         const val PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
+        private const val MOTION_LAYOUT_STATE = "motionLayoutState"
     }
 
     private val representativeViewModel: RepresentativeViewModel by viewModel()
@@ -37,11 +38,15 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentRepresentativeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = representativeViewModel
+
+        savedInstanceState?.getInt(MOTION_LAYOUT_STATE)?.let {
+            binding.motionLayout.transitionToState(it)
+        }
 
         initRecyclerview()
         clickActions()
@@ -173,6 +178,11 @@ class DetailFragment : Fragment() {
                 getCurrentLocation()
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+         outState.putInt(MOTION_LAYOUT_STATE, binding.motionLayout.currentState)
     }
 
 

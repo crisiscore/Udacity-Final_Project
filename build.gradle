@@ -15,7 +15,7 @@ buildscript {
         version_recyclerview = "1.2.0-alpha05"
         version_play_services_location = "17.0.0"
         version_room = "2.2.5"
-        version_koin = '2.0.1'
+        version_koin = '3.3.0'
     }
 
     repositories {
