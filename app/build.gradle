@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 33
+    buildFeatures {
+        dataBinding true
+    }
+    defaultConfig {
+        applicationId 'com.example.android.politicalpreparedness'
+        minSdkVersion 26
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "CIVIC_API_KEY", '"AIzaSyAPTFfEFss1hKI1Z8x7IeJZ6khZ5jxQKb0"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$version_kotlin_serialization"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // Core with Ktx
+    implementation "androidx.core:core-ktx:$version_core"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit: $version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+    implementation "com.squareup.moshi:moshi-adapters:$version_moshi"
+
+
+    //Room dependencies
+
+    implementation "androidx.room:room-ktx:2.4.0-alpha03"
+    implementation "androidx.room:room-runtime:2.4.0-alpha03"
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.1'
+    annotationProcessor "androidx.room:room-compiler:2.4.0-alpha03"
+    kapt 'androidx.room:room-compiler:2.4.0-alpha03'
+
+    // Location
+    implementation "com.google.android.gms:play-services-location:18.0.0"
+
+    //Koin
+    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+
+    //Fragment and Activity
+    implementation 'androidx.activity:activity:1.3.0-alpha07'
+    implementation 'androidx.fragment:fragment:1.3.3'
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$version_glide"
+    kapt "com.github.bumptech.glide:compiler:$version_glide"
+}

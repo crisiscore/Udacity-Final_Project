@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/titleSearch" />
+        <Constraint android:id="@id/etAddressLine1" />
+        <Constraint android:id="@id/etAddressLine2" />
+        <Constraint android:id="@id/etCity" />
+        <Constraint android:id="@id/spnState" />
+        <Constraint android:id="@id/etZip" />
+        <Constraint android:id="@id/btnSearch" />
+        <Constraint android:id="@id/btnLocation" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/titleSearch"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/etAddressLine1"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/etAddressLine2"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/etCity"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/spnState"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/etZip"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/btnSearch"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@id/btnLocation"
+            android:visibility="gone" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/rvRepresentatives" />
+    </Transition>
+
+</MotionScene>
